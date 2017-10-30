@@ -125,31 +125,31 @@ steps:
     #            $( { cleaned_vcfs:  inputs.in_record.cleanedVcfs } )
     #    out: [cleaned_vcfs]
 
-    get_normalized_vcfs:
-        in:
-            in_record: preprocess_vcfs/preprocessedFiles
-        run:
-            class: ExpressionTool
-            inputs:
-                in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
-            outputs:
-                normalized_vcfs: File[]
-            expression: |
-                $( { normalized_vcfs:  inputs.in_record.normalizedVcfs } )
-        out: [normalized_vcfs]
+    #get_normalized_vcfs:
+    #    in:
+    #        in_record: preprocess_vcfs/preprocessedFiles
+    #    run:
+    #        class: ExpressionTool
+    #        inputs:
+    #            in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
+    #        outputs:
+    #            normalized_vcfs: File[]
+    #        expression: |
+    #            $( { normalized_vcfs:  inputs.in_record.normalizedVcfs } )
+    #    out: [normalized_vcfs]
 
-    get_extracted_snvs:
-        in:
-            in_record: preprocess_vcfs/preprocessedFiles
-        run:
-            class: ExpressionTool
-            inputs:
-                in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
-            outputs:
-                extracted_snvs: File[]?
-            expression: |
-                $( { extracted_snvs:  inputs.in_record.extractedSnvs } )
-        out: [extracted_snvs]
+    #get_extracted_snvs:
+    #    in:
+    #        in_record: preprocess_vcfs/preprocessedFiles
+    #    run:
+    #        class: ExpressionTool
+    #        inputs:
+    #            in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
+    #        outputs:
+    #            extracted_snvs: File[]?
+    #        expression: |
+    #            $( { extracted_snvs:  inputs.in_record.extractedSnvs } )
+    #    out: [extracted_snvs]
 
     filter_merged_snv:
         in:
