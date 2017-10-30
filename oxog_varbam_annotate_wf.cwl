@@ -256,36 +256,36 @@ steps:
 
     # Gather the appropriate VCFS.
     # All SNVs, and all SNVs extracted from INDELs.
-    gather_vcfs_for_oxog:
-        in:
-            vcf:
-                source: [zip_and_index_files_for_oxog/zipped_file]
-                valueFrom: |
-                    ${
-                        var snvs = []
-                        for (var i in self)
-                        {
-                            if (self[i].basename.indexOf("snv") !== -1)
-                            {
-                                snvs.push(self[i])
-                            }
-                        }
-                        return snvs
-                    }
-            extractedSNVs:
-                source: get_extracted_snvs/extracted_snvs
-        run:
-            class: ExpressionTool
-            inputs:
-                vcf: File[]
-                extractedSNVs: File[]?
-            outputs:
-                vcfs: File[]
-            expression: |
-                $(
-                    { vcfs: inputs.vcf.concat(inputs.extractedSNVs) }
-                )
-        out: [vcfs]
+    #gather_vcfs_for_oxog:
+    #    in:
+    #        vcf:
+    #            source: [zip_and_index_files_for_oxog/zipped_file]
+    #            valueFrom: |
+    #                ${
+    #                    var snvs = []
+    #                    for (var i in self)
+    #                    {
+    #                        if (self[i].basename.indexOf("snv") !== -1)
+    #                        {
+    #                            snvs.push(self[i])
+    #                        }
+    #                    }
+    #                    return snvs
+    #                }
+    #        extractedSNVs:
+    #            source: get_extracted_snvs/extracted_snvs
+    #    run:
+    #        class: ExpressionTool
+    #        inputs:
+    #            vcf: File[]
+    #            extractedSNVs: File[]?
+    #        outputs:
+    #            vcfs: File[]
+    #        expression: |
+    #            $(
+    #                { vcfs: inputs.vcf.concat(inputs.extractedSNVs) }
+    #            )
+    #    out: [vcfs]
 
 
     ########################################
