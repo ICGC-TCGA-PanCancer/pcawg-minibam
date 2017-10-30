@@ -57,17 +57,17 @@ inputs:
         items: "TumourType.yaml#TumourType"
 
 outputs:
-    oxog_filtered_files:
-        type: File[]
-        outputSource: flatten_oxog_output/oxogVCFs
-        secondaryFiles: "*.tbi"
+    #oxog_filtered_files:
+    #    type: File[]
+    #    outputSource: flatten_oxog_output/oxogVCFs
+    #    secondaryFiles: "*.tbi"
     minibams:
         type: File[]
         outputSource: gather_minibams/minibams
         secondaryFiles: "*.bai"
-    annotated_files:
-        type: File[]
-        outputSource: gather_annotated_vcfs/annotated_vcfs
+    #annotated_files:
+    #    type: File[]
+    #    outputSource: gather_annotated_vcfs/annotated_vcfs
 
 steps:
     ########################################
