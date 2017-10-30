@@ -112,18 +112,18 @@ steps:
                 $( { merged_vcfs:  inputs.in_record.mergedVcfs } )
         out: [merged_vcfs]
 
-    get_cleaned_vcfs:
-        in:
-            in_record: preprocess_vcfs/preprocessedFiles
-        run:
-            class: ExpressionTool
-            inputs:
-                in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
-            outputs:
-                cleaned_vcfs: File[]
-            expression: |
-                $( { cleaned_vcfs:  inputs.in_record.cleanedVcfs } )
-        out: [cleaned_vcfs]
+    #get_cleaned_vcfs:
+    #    in:
+    #        in_record: preprocess_vcfs/preprocessedFiles
+    #    run:
+    #        class: ExpressionTool
+    #        inputs:
+    #            in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
+    #        outputs:
+    #            cleaned_vcfs: File[]
+    #        expression: |
+    #            $( { cleaned_vcfs:  inputs.in_record.cleanedVcfs } )
+    #    out: [cleaned_vcfs]
 
     get_normalized_vcfs:
         in:
@@ -246,13 +246,13 @@ steps:
     ### Prepare for OxoG!
     # First we need to zip and index the VCFs - the OxoG filter requires them to be
     # zipped and index.
-    zip_and_index_files_for_oxog:
-        in:
-            vcf:
-                source: get_cleaned_vcfs/cleaned_vcfs
-        scatter: [vcf]
-        out: [zipped_file]
-        run: zip_and_index_vcf.cwl
+    #zip_and_index_files_for_oxog:
+    #    in:
+    #        vcf:
+    #            source: get_cleaned_vcfs/cleaned_vcfs
+    #    scatter: [vcf]
+    #    out: [zipped_file]
+    #    run: zip_and_index_vcf.cwl
 
     # Gather the appropriate VCFS.
     # All SNVs, and all SNVs extracted from INDELs.
