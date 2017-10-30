@@ -328,18 +328,18 @@ steps:
     # we need OxoG filtered files, and minibams (tumour and normal).
     # Then we need to scatter. We can scatter on minibams, and perform all annotations
     # for each minibam at a time.
-    run_annotator_snvs:
-        in:
-            tumourMinibams: run_variant_bam/minibam
-            VCFs: flatten_oxog_output/oxogVCFs
-            tumour_record:
-                source: tumours
-            normalMinibam: run_variant_bam_normal/minibam
-            variantType:
-                default: "SNV"
-        out: [ annotated_vcfs ]
-        scatter: [tumour_record]
-        run: annotator_sub_wf.cwl
+    #run_annotator_snvs:
+    #    in:
+    #        tumourMinibams: run_variant_bam/minibam
+    #        VCFs: flatten_oxog_output/oxogVCFs
+    #        tumour_record:
+    #            source: tumours
+    #        normalMinibam: run_variant_bam_normal/minibam
+    #        variantType:
+    #            default: "SNV"
+    #    out: [ annotated_vcfs ]
+    #    scatter: [tumour_record]
+    #    run: annotator_sub_wf.cwl
 
     # Annotation must also be performed on INDELs but since INDELs don't get OxoG-filtered,
     # we will use the normalized INDELs.
