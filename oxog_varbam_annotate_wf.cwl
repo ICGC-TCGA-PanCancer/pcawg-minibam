@@ -43,12 +43,12 @@ inputs:
       type: string
     indel-padding:
       type: string
-    refDataDir:
-      type: Directory
-    minibamName:
-      type: string
-    vcfdir:
-      type: Directory
+    #refDataDir:
+    #  type: Directory
+    #minibamName:
+    #  type: string
+    #vcfdir:
+    #  type: Directory
     # "tumours" is an array of records. Each record contains the tumour ID, BAM
     # file name, and an array of VCFs.
     tumours:
