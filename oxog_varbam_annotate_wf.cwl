@@ -293,33 +293,33 @@ steps:
     ########################################
     #
     # OxoG only runs on SNV VCFs
-    run_oxog:
-        in:
-            in_data:
-                source: tumours
-            inputFileDirectory: inputFileDirectory
-            refDataDir: refDataDir
-            vcfsForOxoG: gather_vcfs_for_oxog/vcfs
-        out: [oxogVCF]
-        scatter: [in_data]
-        run: oxog_sub_wf.cwl
+    #run_oxog:
+    #    in:
+    #        in_data:
+    #            source: tumours
+    #        inputFileDirectory: inputFileDirectory
+    #        refDataDir: refDataDir
+    #        vcfsForOxoG: gather_vcfs_for_oxog/vcfs
+    #    out: [oxogVCF]
+    #    scatter: [in_data]
+    #    run: oxog_sub_wf.cwl
 
-    flatten_oxog_output:
-        in:
-            array_of_arrays: run_oxog/oxogVCF
-        run:
-            class: ExpressionTool
-            inputs:
-                array_of_arrays:
-                    type: { type: array, items: { type: array, items: File } }
-            expression: |
-                $(
-                    { oxogVCFs: flatten_nested_arrays(inputs.array_of_arrays) }
-                )
-            outputs:
-                oxogVCFs: File[]
-        out:
-            [oxogVCFs]
+    #flatten_oxog_output:
+    #    in:
+    #        array_of_arrays: run_oxog/oxogVCF
+    #    run:
+    #        class: ExpressionTool
+    #        inputs:
+    #            array_of_arrays:
+    #                type: { type: array, items: { type: array, items: File } }
+    #        expression: |
+    #            $(
+    #                { oxogVCFs: flatten_nested_arrays(inputs.array_of_arrays) }
+    #            )
+    #        outputs:
+    #            oxogVCFs: File[]
+    #    out:
+    #        [oxogVCFs]
 
     ########################################
     # Do Annotation.                       #
