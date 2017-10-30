@@ -112,18 +112,18 @@ steps:
                 $( { merged_vcfs:  inputs.in_record.mergedVcfs } )
         out: [merged_vcfs]
 
-    get_cleaned_vcfs:
-        in:
-            in_record: preprocess_vcfs/preprocessedFiles
-        run:
-            class: ExpressionTool
-            inputs:
-                in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
-            outputs:
-                cleaned_vcfs: File[]
-            expression: |
-                $( { cleaned_vcfs:  inputs.in_record.cleanedVcfs } )
-        out: [cleaned_vcfs]
+    #get_cleaned_vcfs:
+    #    in:
+    #        in_record: preprocess_vcfs/preprocessedFiles
+    #    run:
+    #        class: ExpressionTool
+    #        inputs:
+    #            in_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
+    #        outputs:
+    #            cleaned_vcfs: File[]
+    #        expression: |
+    #            $( { cleaned_vcfs:  inputs.in_record.cleanedVcfs } )
+    #    out: [cleaned_vcfs]
 
     get_normalized_vcfs:
         in:
