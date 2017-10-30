@@ -343,18 +343,18 @@ steps:
 
     # Annotation must also be performed on INDELs but since INDELs don't get OxoG-filtered,
     # we will use the normalized INDELs.
-    run_annotator_indels:
-        in:
-            tumourMinibams: run_variant_bam/minibam
-            VCFs: get_normalized_vcfs/normalized_vcfs
-            tumour_record:
-                source: tumours
-            normalMinibam: run_variant_bam_normal/minibam
-            variantType:
-                default: "INDEL"
-        out: [annotated_vcfs]
-        scatter: [tumour_record]
-        run: annotator_sub_wf.cwl
+    #run_annotator_indels:
+    #    in:
+    #        tumourMinibams: run_variant_bam/minibam
+    #        VCFs: get_normalized_vcfs/normalized_vcfs
+    #        tumour_record:
+    #            source: tumours
+    #        normalMinibam: run_variant_bam_normal/minibam
+    #        variantType:
+    #            default: "INDEL"
+    #    out: [annotated_vcfs]
+    #    scatter: [tumour_record]
+    #    run: annotator_sub_wf.cwl
 
     #gather_annotated_vcfs:
     #    in:
