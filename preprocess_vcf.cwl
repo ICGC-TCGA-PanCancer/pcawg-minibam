@@ -395,17 +395,11 @@ steps:
             class: ExpressionTool
             inputs:
                 mergedVcfs: File[]
-                extractedSnvs: File[]?
-                normalizedVcfs: File[]
-                cleanedVcfs: File[]
             outputs:
               output_record: "PreprocessedFilesType.yaml#PreprocessedFileset"
             expression: |
                     $(
                         {output_record: {
-                            "cleanedVcfs": inputs.cleanedVcfs,
                             "mergedVcfs": inputs.mergedVcfs,
-                            "extractedSnvs": inputs.extractedSnvs,
-                            "normalizedVcfs": inputs.normalizedVcfs
                         }}
                     )

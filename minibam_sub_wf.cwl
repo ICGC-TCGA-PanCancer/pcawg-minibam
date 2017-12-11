@@ -25,7 +25,7 @@ outputs:
 inputs:
     inputFileDirectory:
         type: Directory
-    in_data:
+    tumour:
         type: "TumourType.yaml#TumourType"
     indel-padding:
         type: string
@@ -45,13 +45,13 @@ steps:
         run: Variantbam-for-dockstore/variantbam.cwl
         in:
             input-bam:
-                source: [inputFileDirectory, in_data]
+                source: [inputFileDirectory, tumour]
                 valueFrom: |
                     ${
                         return { "class":"File", "location": self[0].location + "/" + self[1].bamFileName }
                     }
             outfile:
-                source: [in_data]
+                source: [tumour]
                 valueFrom: $("mini-".concat(self.tumourId).concat(".bam"))
             snv-padding: snv-padding
             sv-padding: sv-padding

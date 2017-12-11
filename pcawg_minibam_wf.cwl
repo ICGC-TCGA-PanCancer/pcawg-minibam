@@ -142,7 +142,7 @@ steps:
     # This needs to be run for each tumour, using VCFs that are merged pipelines per tumour.
     run_variant_bam:
         in:
-            in_data:
+            tumour:
                 source: tumours
             indel-padding: indel-padding
             snv-padding: snv-padding
@@ -152,8 +152,8 @@ steps:
             input-indel: filter_merged_indel/merged_indel_vcf
             inputFileDirectory: inputFileDirectory
         out: [minibam]
-        scatter: [in_data]
-        run: ./minibam_sub_wf.cwl
+        scatter: [tumour]
+        run: minibam_sub_wf.cwl
 
     # Create minibam for normal BAM. It would be nice to figure out how to get this into
     # the main run_variant_bam step that currently only does tumour BAMs.
