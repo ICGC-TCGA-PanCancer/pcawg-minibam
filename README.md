@@ -1,24 +1,10 @@
-# OxoG-Dockstore-Tools
+# pcawg-minibam
 
-[![Docker Repository on Quay](https://quay.io/repository/pancancer/pcawg-oxog-tools/status "Docker Repository on Quay")](https://quay.io/repository/pancancer/pcawg-oxog-tools)
+The CWL workflow to generate minbiams _only_. For a workflow that runs PCAWG OxoG Filter, PCAWG Annotation, and generates Minibams, see this repository:  https://github.com/ICGC-TCGA-PanCancer/OxoG-Dockstore-Tools
 
-A set of CWL tools that are based on scripts used in the OxoGWrapperWorkflow.
+This CWL workflow uses Variantbam to generate minibams. for more information on Variantbam, see: https://github.com/walaj/VariantBam/
 
-Tools contained within:
- - check_minibams.sh - Checks that minibams are OK
- - clean_vcf.sh - Cleans VCFS so that they are ready to be processed by the OxoGWrapperWorkflow
- - normalize.sh - Normalizes INDEL files by calling bcf-tools norm.
- - pass_filter.sh - Performs pass-filtering on VCFs.
- - vcf_merge_by_type.pl - Merges VCFs.
+The original SeqWare workflow can be found here: https://github.com/ICGC-TCGA-PanCancer/OxoGWrapperWorkflow
+The Seqware workflow runs: the OxoG filter, produces mini-bams, and also runs Jonathan Dursi's PCAWG Annotator.
 
-To get the submodules, use a command like this:
-
-```bash
-$ git submodule update --init --recursive
-```
-
-## Reference Files.
-You will need the reference files located at https://personal.broadinstitute.org/gsaksena/public_full8.tar.gz
-
-## Running the workflow
-You will need to run the workflow with the cwltool flags `--relax-path-checks` and `--non-strict`.
+To visualize _this_ workflow, see here: https://view.commonwl.org/workflows/github.com/ICGC-TCGA-PanCancer/pcawg-minibam/blob/master/pcawg_minibam_wf.cwl
