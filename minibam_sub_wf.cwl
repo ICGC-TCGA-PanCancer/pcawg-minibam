@@ -14,7 +14,7 @@ requirements:
     - class: MultipleInputFeatureRequirement
     - class: InlineJavascriptRequirement
       expressionLib:
-        - { $include: oxog_varbam_annotate_util.js }
+        - { $include: varbam_util.js }
     - class: SubworkflowFeatureRequirement
 
 class: Workflow
@@ -22,6 +22,8 @@ outputs:
     minibam:
         outputSource: sub_run_var_bam/minibam
         type: File
+        secondaryFiles:
+          - "*.bai"
 inputs:
     inputFileDirectory:
         type: Directory
@@ -60,3 +62,5 @@ steps:
             input-sv: input-sv
             input-indel: input-indel
         out: [minibam]
+          # secondaryFiles:
+          #     - "*.bai"

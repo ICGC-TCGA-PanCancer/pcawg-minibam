@@ -21,7 +21,7 @@ requirements:
     - class: MultipleInputFeatureRequirement
     - class: InlineJavascriptRequirement
       expressionLib:
-        - { $include: oxog_varbam_annotate_util.js }
+        - { $include: varbam_util.js }
         # Shouldn't have to *explicitly* include these but there's
         # probably a bug somewhere that makes it necessary
         - { $include: preprocess_util.js }
@@ -172,6 +172,8 @@ steps:
                 valueFrom: $("mini-".concat(self.basename))
         run: Variantbam-for-dockstore/variantbam.cwl
         out: [minibam]
+          # secondaryFiles:
+          #     - "*.bai"
 
     # Gather all minibams into a single output array.
     gather_minibams:
@@ -188,3 +190,5 @@ steps:
             expression: |
                 $( { minibams: inputs.tumour_minibams.concat(inputs.normal_minibam) } )
         out: [minibams]
+          # secondaryFiles:
+          #     - "*.bai"
