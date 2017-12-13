@@ -51,7 +51,7 @@ inputs:
 outputs:
     minibams:
         type: File[]
-        outputSource: gather_minibams/minibams
+        outputSource: gather_minibams/minibamsAndIndices
         secondaryFiles: "*.bai"
 
 steps:
@@ -151,7 +151,7 @@ steps:
             input-sv: filter_merged_sv/merged_sv_vcf
             input-indel: filter_merged_indel/merged_indel_vcf
             inputFileDirectory: inputFileDirectory
-        out: [minibam]
+        out: [minibam, minibamIndex]
         scatter: [tumour]
         run: minibam_sub_wf.cwl
 
@@ -171,7 +171,7 @@ steps:
                 source: normalBam
                 valueFrom: $("mini-".concat(self.basename))
         run: Variantbam-for-dockstore/variantbam.cwl
-        out: [minibam]
+        out: [minibam, minibamIndex]
           # secondaryFiles:
           #     - "*.bai"
 
@@ -180,15 +180,19 @@ steps:
         in:
             tumour_minibams: run_variant_bam/minibam
             normal_minibam: run_variant_bam_normal/minibam
+            tumour_minibam_indices: run_variant_bam/minibamIndex
+            normal_minibam_index: run_variant_bam_normal/minibamIndex
         run:
             class: ExpressionTool
             inputs:
                 tumour_minibams: File[]
+                tumour_minibam_indices: File[]
                 normal_minibam: File
+                normal_minibam_index: File
             outputs:
-                minibams: File[]
+                minibamsAndIndices: File[]
             expression: |
-                $( { minibams: inputs.tumour_minibams.concat(inputs.normal_minibam) } )
-        out: [minibams]
+                $( { minibamsAndIndices: inputs.tumour_minibams.concat(inputs.normal_minibam).concat(inputs.normal_minibam_index).concat(inputs.tumour_minibam_indices) } )
+        out: [minibamsAndIndices]
           # secondaryFiles:
           #     - "*.bai"

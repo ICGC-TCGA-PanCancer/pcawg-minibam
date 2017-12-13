@@ -22,8 +22,11 @@ outputs:
     minibam:
         outputSource: sub_run_var_bam/minibam
         type: File
-        secondaryFiles:
-          - "*.bai"
+    minibamIndex:
+        outputSource: sub_run_var_bam/minibamIndex
+        type: File
+
+
 inputs:
     inputFileDirectory:
         type: Directory
@@ -61,6 +64,6 @@ steps:
             input-snv: input-snv
             input-sv: input-sv
             input-indel: input-indel
-        out: [minibam]
+        out: [minibam, minibamIndex]
           # secondaryFiles:
           #     - "*.bai"
