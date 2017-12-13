@@ -65,5 +65,3 @@ steps:
             input-sv: input-sv
             input-indel: input-indel
         out: [minibam, minibamIndex]
-          # secondaryFiles:
-          #     - "*.bai"

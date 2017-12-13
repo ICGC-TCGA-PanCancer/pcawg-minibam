@@ -22,8 +22,6 @@ requirements:
     - class: InlineJavascriptRequirement
       expressionLib:
         - { $include: varbam_util.js }
-        # Shouldn't have to *explicitly* include these but there's
-        # probably a bug somewhere that makes it necessary
         - { $include: preprocess_util.js }
         - { $include: vcf_merge_util.js }
     - class: SubworkflowFeatureRequirement
@@ -172,8 +170,6 @@ steps:
                 valueFrom: $("mini-".concat(self.basename))
         run: Variantbam-for-dockstore/variantbam.cwl
         out: [minibam, minibamIndex]
-          # secondaryFiles:
-          #     - "*.bai"
 
     # Gather all minibams into a single output array.
     gather_minibams:
@@ -194,5 +190,3 @@ steps:
             expression: |
                 $( { minibamsAndIndices: inputs.tumour_minibams.concat(inputs.normal_minibam).concat(inputs.normal_minibam_index).concat(inputs.tumour_minibam_indices) } )
         out: [minibamsAndIndices]
-          # secondaryFiles:
-          #     - "*.bai"
