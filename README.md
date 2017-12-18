@@ -8,3 +8,8 @@ The original SeqWare workflow can be found here: https://github.com/ICGC-TCGA-Pa
 The Seqware workflow runs: the OxoG filter, produces mini-bams, and also runs Jonathan Dursi's PCAWG Annotator.
 
 To visualize _this_ workflow, see here: https://view.commonwl.org/workflows/github.com/ICGC-TCGA-PanCancer/pcawg-minibam/blob/develop/pcawg_minibam_wf.cwl
+
+You can run this workflow with this command:
+```
+$ cwltool --debug --relax-path-checks --non-strict ./pcawg_minibam_wf.cwl ./my_input_file.json > out 2> err &
+```
