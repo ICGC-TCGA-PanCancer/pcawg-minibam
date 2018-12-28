@@ -31,6 +31,8 @@ inputs:
       type: Directory
     refFile:
       type: File
+      secondaryFiles:
+       - .fai
     out_dir:
       type: string
     normalBam:
